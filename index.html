@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Star Wars RPG</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <div class="text-center bigText">Star Wars RPG!</div>
+        <div class="choose-character">Choose Your Character</div>
+        <div class="panel">
+            <div class="row">
+                <div id="luke" class="img-border first-img-border">
+                    <p class="image-text">Luke Skywalker</p><img class="smaller-img" src="assets/images/lukeskywalker.png" alt="Luke Skywalker">
+                    <p class="image-text healthpointsLuke"></p>
+                </div>
+                <div id="ben" class="img-border Ben">
+                    <p class="image-text">Ben Kenobi</p><img class="smaller-img" src="assets/images/benkinobi.png" alt="Ben Kenboi">
+                    <p class="image-text healthpointsBen"></p>
+                </div>
+                <div id="boba" class="img-border Boba">
+                    <p class="image-text">Boba Fett</p><img class="smaller-img" src="assets/images/bobafett.png" alt="Boba Fett">
+                    <p class="image-text healthpointsBoba"></p>
+                </div>
+                <div id="vader" class="img-border Vader">
+                    <p class="image-text">Darth Vader</p><img class="smaller-img" src="assets/images/darthvader.png" alt="Darth Vader">
+                    <p class="image-text healthpointsVader"></p>
+                </div>
+            </div>
+        </div>
+        <div>Your Character</div>
+        <div id="your-character"></div>
+        <div>Enemies Available to Attack</div>
+        <div id="enemies-to-attack" class="row">
+        </div>
+        <div>Fight Section</div>
+        <button class="btn btn-large btn-danger">Attack</button>
+        <div>Defender</div>
+        <div id="defender"></div>
+    </body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+</html>
