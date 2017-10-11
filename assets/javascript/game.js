@@ -27,7 +27,8 @@ $(document).ready(function() {
     var isCharacterChosen = false;
     var isEnemyChosen = false;
     var currentCharacter;
-    var currentEnemy = '';
+    var currentEnemy;
+    var defeatedEnemies = 0;
     $(".healthpointsLuke").html(Luke.health);
     $(".healthpointsBen").html(Ben.health);
     $(".healthpointsBoba").html(Boba.health);
@@ -157,7 +158,9 @@ $(document).ready(function() {
                 if (currentCharacter.health <= 0) {
                     alert("You lose!");
                 } else if (currentEnemy.health <= 0) {
-                    alert("You have defeated your enemy!");
+                    alert("You have defeated an enemy!");
+                    defeatedEnemies += 1;
+                    if(defeatedEnemies === 3) {alert("You have defeated all enemies!");}
                     isEnemyChosen = false;
                     if (currentEnemy.name == "boba") {
                         $("#boba").appendTo("#graveyard");
@@ -182,3 +185,10 @@ $(document).ready(function() {
 
 
 });
+
+
+
+
+
+
+
