@@ -1,24 +1,28 @@
 // when you click a character it moves it to the YOUR CHARACTERS area --> done
 // after you select a character it moves the unselected characters to EMEMIES AVAILABLE --> done
 // you then must select an enemy to attack and they move to DEFENDER area --> done
-// give the button an on click event that attacks the defender and triggers a counter attack to the chosen player
+// give the button an on click event that attacks the defender and triggers a counter attack to the chosen player --> done
 $(document).ready(function() {
-    //Display the health of the characters
+    // Create the health, name, and attack points of the characters
     var Luke = {
+        name: "luke",
         health: 120,
-        atkPts: 5
+        atkPts: 1
     };
     var Ben = {
+        name: "ben",
         health: 100,
         atkPts: 12
     };
     var Boba = {
+        name: "boba",
         health: 100,
-        atkPts: 8
+        atkPts: 1.5
     };
     var Vader = {
+        name: "vader",
         health: 150,
-        atkPts: 16
+        atkPts: 3
     };
     var isCharacterChosen = false;
     var isEnemyChosen = false;
@@ -139,14 +143,39 @@ $(document).ready(function() {
         };
     });
 
-    if (isCharacterChosen && isEnemyChosen) {
-        $("#attack-button").on("click", function() {
-            (currentEnemy.health) - (currentCharacter.atkPts);
-        });
-    }
 
+    $("#attack-button").on("click", function() {
+        for (var i = 0; i < 1; i++) {
+            if (isCharacterChosen && isEnemyChosen) {
+                currentCharacter.atkPts *= 2;
+                currentEnemy.health = currentEnemy.health - currentCharacter.atkPts;
+                currentCharacter.health = currentCharacter.health - currentEnemy.atkPts;
+                $(".healthpointsLuke").html(Luke.health);
+                $(".healthpointsBen").html(Ben.health);
+                $(".healthpointsBoba").html(Boba.health);
+                $(".healthpointsVader").html(Vader.health);
+                if (currentCharacter.health <= 0) {
+                    alert("You lose!");
+                } else if (currentEnemy.health <= 0) {
+                    alert("You have defeated your enemy!");
+                    isEnemyChosen = false;
+                    if (currentEnemy.name == "boba") {
+                        $("#boba").appendTo("#graveyard");
+                    }
+                    if (currentEnemy.name == "luke") {
+                        $("#luke").appendTo("#graveyard");
+                    }
+                    if (currentEnemy.name == "ben") {
+                        $("#ben").appendTo("#graveyard");
+                    }
+                    if (currentEnemy.name == "vader") {
+                        $("#vader").appendTo("#graveyard");
+                    }
 
-
+                }
+            }
+        }
+    });
 
 
 
