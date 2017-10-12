@@ -7,21 +7,25 @@ $(document).ready(function() {
     var Luke = {
         name: "Luke Skywalker",
         health: 100,
+        baseAtk: 5,
         atkPts: 5
     };
     var Ben = {
         name: "Ben Kenobi",
         health: 120,
+        baseAtk: 8,
         atkPts: 8
     };
     var Boba = {
         name: "Boba Fett",
         health: 150,
+        baseAtk: 20,
         atkPts: 20
     };
     var Vader = {
         name: "Darth Vader",
         health: 180,
+        baseAtk: 25,
         atkPts: 25
     };
     var isCharacterChosen = false;
@@ -144,10 +148,13 @@ $(document).ready(function() {
     $("#attack-button").on("click", function() {
         for (var i = 0; i < 1; i++) {
             if (isCharacterChosen && isEnemyChosen) {
-                currentCharacter.atkPts *= 2; // This doubles your characters attack power every time you click attack
                 currentEnemy.health = currentEnemy.health - currentCharacter.atkPts; // You damage enemy
                 $("#character-combat").text("You attacked " + currentEnemy.name + " for " + currentCharacter.atkPts + " damage.");
-                currentCharacter.health = currentCharacter.health - currentEnemy.atkPts; // Enemy counters you
+                currentCharacter.atkPts += currentCharacter.baseAtk; // This increases your characters attack power every time you click attack
+                if(currentEnemy.health > 0){ 
+                currentCharacter.health = currentCharacter.health - currentEnemy.atkPts;
+                } else {currentCharacter.health - 0; // Enemy counters you as long as their health isn't 0 or less
+                }
                 $("#enemy-combat").text(currentEnemy.name + " attacked you back for " + currentEnemy.atkPts + " damage.");
                 $(".healthpointsLuke").html(Luke.health);
                 $(".healthpointsBen").html(Ben.health);
