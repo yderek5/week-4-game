@@ -34,3 +34,14 @@ margin-bottom: 0px
 .redBorder {
 border:solid red 3px;
 }
+.combat-log {
+right:10px;
+top:60px;
+position:absolute;
+background-color: black;
+}
+#reset {
+position: absolute;
+bottom:50px;
+right: 50px;
+}

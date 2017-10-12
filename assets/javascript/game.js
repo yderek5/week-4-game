@@ -5,24 +5,24 @@
 $(document).ready(function() {
     // Create the health, name, and attack points of the characters
     var Luke = {
-        name: "luke",
-        health: 120,
-        atkPts: 1
+        name: "Luke Skywalker",
+        health: 100,
+        atkPts: 5
     };
     var Ben = {
-        name: "ben",
-        health: 100,
-        atkPts: 12
+        name: "Ben Kenobi",
+        health: 120,
+        atkPts: 8
     };
     var Boba = {
-        name: "boba",
-        health: 100,
-        atkPts: 1.5
+        name: "Boba Fett",
+        health: 150,
+        atkPts: 20
     };
     var Vader = {
-        name: "vader",
-        health: 150,
-        atkPts: 3
+        name: "Darth Vader",
+        health: 180,
+        atkPts: 25
     };
     var isCharacterChosen = false;
     var isEnemyChosen = false;
@@ -33,8 +33,6 @@ $(document).ready(function() {
     $(".healthpointsBen").html(Ben.health);
     $(".healthpointsBoba").html(Boba.health);
     $(".healthpointsVader").html(Vader.health);
-
-
     //User clicks luke
     //check to see if character is chosen
     $("#luke").on("click", function() {
@@ -143,14 +141,14 @@ $(document).ready(function() {
             $("#luke").addClass("redBorder");
         };
     });
-
-
     $("#attack-button").on("click", function() {
         for (var i = 0; i < 1; i++) {
             if (isCharacterChosen && isEnemyChosen) {
-                currentCharacter.atkPts *= 2;
-                currentEnemy.health = currentEnemy.health - currentCharacter.atkPts;
-                currentCharacter.health = currentCharacter.health - currentEnemy.atkPts;
+                currentCharacter.atkPts *= 2; // This doubles your characters attack power every time you click attack
+                currentEnemy.health = currentEnemy.health - currentCharacter.atkPts; // You damage enemy
+                $("#character-combat").text("You attacked " + currentEnemy.name + " for " + currentCharacter.atkPts + " damage.");
+                currentCharacter.health = currentCharacter.health - currentEnemy.atkPts; // Enemy counters you
+                $("#enemy-combat").text(currentEnemy.name + " attacked you back for " + currentEnemy.atkPts + " damage.");
                 $(".healthpointsLuke").html(Luke.health);
                 $(".healthpointsBen").html(Ben.health);
                 $(".healthpointsBoba").html(Boba.health);
@@ -160,35 +158,27 @@ $(document).ready(function() {
                 } else if (currentEnemy.health <= 0) {
                     alert("You have defeated an enemy!");
                     defeatedEnemies += 1;
-                    if(defeatedEnemies === 3) {alert("You have defeated all enemies!");}
+                    if (defeatedEnemies === 3) {
+                        alert("You have defeated all enemies!");
+                    }
                     isEnemyChosen = false;
-                    if (currentEnemy.name == "boba") {
-                        $("#boba").appendTo("#graveyard");
+                    if (currentEnemy.name == "Boba Fett") {
+                        $("#defender").empty();
                     }
-                    if (currentEnemy.name == "luke") {
-                        $("#luke").appendTo("#graveyard");
+                    if (currentEnemy.name == "Luke Skywalker") {
+                        $("#defender").empty();
                     }
-                    if (currentEnemy.name == "ben") {
-                        $("#ben").appendTo("#graveyard");
+                    if (currentEnemy.name == "Ben Kenobi") {
+                        $("#defender").empty();
                     }
-                    if (currentEnemy.name == "vader") {
-                        $("#vader").appendTo("#graveyard");
+                    if (currentEnemy.name == "Darth Vader") {
+                        $("#defender").empty();
                     }
-
                 }
             }
         }
     });
-
-
-
-
-
+    $("#reset").on("click", function() {
+        window.location.reload();
+    })
 });
-
-
-
-
-
-
-
