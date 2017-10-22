@@ -37,6 +37,7 @@ $(document).ready(function() {
     $(".healthpointsBen").html(Ben.health);
     $(".healthpointsBoba").html(Boba.health);
     $(".healthpointsVader").html(Vader.health);
+    $("#character-combat").text("Please select a character and then an enemy to start.");
     //User clicks luke
     //check to see if character is chosen
     $("#luke").on("click", function() {
@@ -62,7 +63,7 @@ $(document).ready(function() {
             $("#boba").addClass("redBorder");
             $("#vader").appendTo("#enemies-to-attack");
             $("#vader").addClass("redBorder");
-        };
+        }
     });
     //User clicks ben
     //check to see if character is chosen
@@ -89,7 +90,7 @@ $(document).ready(function() {
             $("#boba").addClass("redBorder");
             $("#vader").appendTo("#enemies-to-attack");
             $("#vader").addClass("redBorder");
-        };
+        }
     });
     //User clicks boba
     //check to see if character is chosen
@@ -116,7 +117,7 @@ $(document).ready(function() {
             $("#luke").addClass("redBorder");
             $("#vader").appendTo("#enemies-to-attack");
             $("#vader").addClass("redBorder");
-        };
+        }
     });
     //User clicks vader
     //check to see if character is chosen
@@ -143,17 +144,22 @@ $(document).ready(function() {
             $("#boba").addClass("redBorder");
             $("#luke").appendTo("#enemies-to-attack");
             $("#luke").addClass("redBorder");
-        };
+        }
     });
     $("#attack-button").on("click", function() {
         for (var i = 0; i < 1; i++) {
+            if (isEnemyChosen === false) {
+                $("#enemy-combat").text("You need an enemy to attack first!");
+            }
+
             if (isCharacterChosen && isEnemyChosen) {
                 currentEnemy.health = currentEnemy.health - currentCharacter.atkPts; // You damage enemy
                 $("#character-combat").text("You attacked " + currentEnemy.name + " for " + currentCharacter.atkPts + " damage.");
                 currentCharacter.atkPts += currentCharacter.baseAtk; // This increases your characters attack power every time you click attack
-                if(currentEnemy.health > 0){ 
-                currentCharacter.health = currentCharacter.health - currentEnemy.atkPts;
-                } else {currentCharacter.health - 0; // Enemy counters you as long as their health isn't 0 or less
+                if (currentEnemy.health > 0) {
+                    currentCharacter.health = currentCharacter.health - currentEnemy.atkPts;
+                } else {
+                    currentCharacter.health - 0; // Enemy counters you as long as their health isn't 0 or less
                 }
                 $("#enemy-combat").text(currentEnemy.name + " attacked you back for " + currentEnemy.atkPts + " damage.");
                 $(".healthpointsLuke").html(Luke.health);
@@ -187,5 +193,5 @@ $(document).ready(function() {
     });
     $("#reset").on("click", function() {
         window.location.reload();
-    })
+    });
 });
